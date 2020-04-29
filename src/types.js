@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLBoolean, GraphQLInt, GraphQLFloat, GraphQLString } = require('graphql')
+const { GraphQLObjectType, GraphQLList, GraphQLNonNull, GraphQLBoolean, GraphQLInt, GraphQLString } = require('graphql')
 const { albums, comments, photos, posts, todos } = require('../data.json')
 
 const AlbumType = new GraphQLObjectType({
@@ -90,8 +90,8 @@ const UserType = new GraphQLObjectType({
                             name: 'Geo',
                             description: 'Represents latitude and longitude',
                             fields: () => ({
-                                lat: { type: GraphQLNonNull(GraphQLFloat) },
-                                lng: { type: GraphQLNonNull(GraphQLFloat) }
+                                lat: { type: GraphQLNonNull(GraphQLString) },
+                                lng: { type: GraphQLNonNull(GraphQLString) }
                             })
                         })
                     }
