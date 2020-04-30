@@ -25,7 +25,7 @@ const addAlbum = {
         const newAlbum = {
             userId: args.userId,
             id: data.length + 1,
-            title: args.id
+            title: args.title
         }
         return newAlbum
     }

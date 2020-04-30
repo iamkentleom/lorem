@@ -28,7 +28,7 @@ const addPhoto = {
             albumId: args.albumId,
             id: data.length + 1,
             title: args.title,
-            url: args.title,
+            url: args.url,
             thumbnailUrl: args.thumbnailUrl
         }
         return newPhoto
