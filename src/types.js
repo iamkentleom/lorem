@@ -116,7 +116,7 @@ const UserType = new GraphQLObjectType({
                 return albums.filter(album => album.userId === user.id)
             }
         },
-        post: {
+        posts: {
             type: new GraphQLList(PostType),
             resolve: (user) => {
                 return posts.filter(post => post.userId === user.id)
