@@ -1,6 +1,6 @@
-# Fake GraphQL API
+# Lorem
 
-GraphPlaceholder is a fake GraphQL API for testing and prototyping similar to that of JSONPlaceholder
+Lorem is a fake GraphQL API for testing and prototyping similar to that of JSONPlaceholder
 
 ## Usage
 Install dependencies
@@ -11,12 +11,14 @@ Run server
 ```bash
 npm run dev # running development server
 # or
-npm run start # running server
+npm start # running the server
 ```
 
 
-## Resources
+## Useful Resources
+- https://graphql.org/learn/
 - https://www.youtube.com/watch?v=ZQL7tL2S0oQ
 - https://github.com/WebDevSimplified/Learn-GraphQL
 - https://jsonplaceholder.typicode.com/
 - https://github.com/typicode/jsonplaceholder
+- https://medium.com/atheros/json-as-an-argument-for-graphql-mutations-and-queries-3cd06d252a04
