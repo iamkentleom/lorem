@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt } = require('graphql')
+const { GraphQLList, GraphQLNonNull, GraphQLInt, GraphQLString } = require('graphql')
 const { CommentType } = require('./types')
 const data = require('../data.json').comments
 
@@ -17,4 +17,25 @@ const comment = {
     resolve: (parent, args) => data.find(comment => comment.id === args.id)
 }
 
-module.exports = { comment, comments }
+const addComment = {
+    type: CommentType,
+    description: 'Add a new comment',
+    args: {
+        postId: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        email: { type: GraphQLNonNull(GraphQLString) },
+        body: { type: GraphQLNonNull(GraphQLString) }
+    },
+    resolve: () => {
+        const newComment = {
+            postId: args.postId,
+            id: data.length + 1,
+            name: args.name,
+            email: args.email,
+            body: args.body
+        }
+        return newComment
+    }
+}
+
+module.exports = { addComment, comment, comments }

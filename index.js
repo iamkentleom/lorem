@@ -3,12 +3,12 @@ const expressGraphQL = require('express-graphql')
 const cors = require('cors')
 const { GraphQLSchema, GraphQLObjectType } = require('graphql')
 
-const { album, albums } = require('./src/albums')
-const { comment, comments }  = require('./src/comments')
-const { photo, photos } = require('./src/photos')
-const { post, posts } = require('./src/posts')  
+const { addAlbum, album, albums } = require('./src/albums')
+const { addComment, comment, comments }  = require('./src/comments')
+const { addPhoto, photo, photos } = require('./src/photos')
+const { addPost, post, posts } = require('./src/posts')  
 const { addTodo, todo, todos } = require('./src/todos')
-const { user, users } = require('./src/users')
+const { addUser, user, users } = require('./src/users')
 
 
 const app = express()
@@ -38,7 +38,12 @@ const RootMutationType = new GraphQLObjectType({
     name: 'Mutation',
     description: 'Root Mutation',
     fields: () => ({
-        addTodo
+        addAlbum,
+        addComment,
+        addPhoto,
+        addPost,
+        addTodo,
+        // addUser
     })
 })
 

@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt } = require('graphql')
+const { GraphQLList, GraphQLNonNull, GraphQLInt, GraphQLString } = require('graphql')
 const { PostType } = require('./types')
 const  data = require('../data.json').posts
 
@@ -18,4 +18,23 @@ const post = {
 }
 
 
-module.exports = { posts, post }
+const addPost = {
+    type: PostType,
+    description: 'Add a new post',
+    args: {
+        userId: { type: GraphQLNonNull(GraphQLInt) },
+        title: { type: GraphQLNonNull(GraphQLString) },
+        body: { type: GraphQLNonNull(GraphQLString) }
+    },
+    resolve: (parent, args) => {
+        const newPost = {
+            userId: args.userId,
+            id: data.length + 1,
+            title: args.title,
+            body: args.body
+        }
+        return newPost
+    }
+}
+
+module.exports = { addPost, posts, post }

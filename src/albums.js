@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt } = require('graphql')
+const { GraphQLList, GraphQLNonNull, GraphQLInt, GraphQLString } = require('graphql')
 const { AlbumType } = require('./types')
 const data = require('../data.json').albums
 
@@ -17,4 +17,21 @@ const album = {
     resolve: (parent, args) => data.find(album => album.id === args.id)
 }
 
-module.exports = { album, albums }
+const addAlbum = {
+    type: AlbumType,
+    description: 'Add a new album',
+    args: {
+        userId: { type: GraphQLNonNull(GraphQLInt) },
+        title: { type: GraphQLNonNull(GraphQLString) }
+    },
+    resolve: (parent, args) => {
+        const newAlbum = {
+            userId: args.userId,
+            id: data.length + 1,
+            title: args.id
+        }
+        return newAlbum
+    }
+}
+
+module.exports = { addAlbum, album, albums }
