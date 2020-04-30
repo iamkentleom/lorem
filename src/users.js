@@ -25,32 +25,32 @@ const UserInput = new GraphQLInputObjectType({
             type: new GraphQLInputObjectType({
                 name: 'AddressInput',
                 fields: () => ({
-                    street: { type: GraphQLNonNull(GraphQLString) },
-                    suite: { type: GraphQLNonNull(GraphQLString) },
-                    city: { type: GraphQLNonNull(GraphQLString) },
-                    zipcode: { type: GraphQLNonNull(GraphQLString) },
+                    street: { type: GraphQLString, defaultValue: '' },
+                    suite: { type: GraphQLString, defaultValue: '' },
+                    city: { type: GraphQLString, defaultValue: '' },
+                    zipcode: { type: GraphQLString, defaultValue: '' },
                     geo: {
                         type: new GraphQLInputObjectType({
                             name: 'GeoInput',
                             description: 'Represents latitude and longitude',
                             fields: () => ({
-                                lat: { type: GraphQLNonNull(GraphQLString) },
-                                lng: { type: GraphQLNonNull(GraphQLString) }
+                                lat: { type: GraphQLString, defaultValue: '' },
+                                lng: { type: GraphQLString, defaultValue: '' }
                             })
                         })
                     }
                 })
             })
         },
-        phone: { type: GraphQLNonNull(GraphQLString) },
-        website: { type: GraphQLNonNull(GraphQLString) },
+        phone: { type: GraphQLString, defaultValue: '' },
+        website: { type: GraphQLString, defaultValue: '' },
         company: {
             type: new GraphQLInputObjectType({
                 name: 'CompanyInput',
                 fields: () => ({
-                    name: { type: GraphQLNonNull(GraphQLString) },
-                    catchPhrase: { type: GraphQLNonNull(GraphQLString) },
-                    bs: { type: GraphQLNonNull(GraphQLString) }
+                    name: { type: GraphQLString, defaultValue: '' },
+                    catchPhrase: { type: GraphQLString, defaultValue: '' },
+                    bs: { type: GraphQLString, defaultValue: '' }
                 })
             })
         }

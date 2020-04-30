@@ -81,32 +81,32 @@ const UserType = new GraphQLObjectType({
             type: new GraphQLObjectType({
                 name: 'Address',
                 fields: () => ({
-                    street: { type: GraphQLNonNull(GraphQLString) },
-                    suite: { type: GraphQLNonNull(GraphQLString) },
-                    city: { type: GraphQLNonNull(GraphQLString) },
-                    zipcode: { type: GraphQLNonNull(GraphQLString) },
+                    street: { type: GraphQLString },
+                    suite: { type: GraphQLString },
+                    city: { type: GraphQLString },
+                    zipcode: { type: GraphQLString },
                     geo: {
                         type: new GraphQLObjectType({
                             name: 'Geo',
                             description: 'Represents latitude and longitude',
                             fields: () => ({
-                                lat: { type: GraphQLNonNull(GraphQLString) },
-                                lng: { type: GraphQLNonNull(GraphQLString) }
+                                lat: { type: GraphQLString },
+                                lng: { type: GraphQLString }
                             })
                         })
                     }
                 })
             })
         },
-        phone: { type: GraphQLNonNull(GraphQLString) },
-        website: { type: GraphQLNonNull(GraphQLString) },
+        phone: { type: GraphQLString },
+        website: { type: GraphQLString },
         company: {
             type: new GraphQLObjectType({
                 name: 'Company',
                 fields: () => ({
-                    name: { type: GraphQLNonNull(GraphQLString) },
-                    catchPhrase: { type: GraphQLNonNull(GraphQLString) },
-                    bs: { type: GraphQLNonNull(GraphQLString) }
+                    name: { type: GraphQLString },
+                    catchPhrase: { type: GraphQLString },
+                    bs: { type: GraphQLString }
                 })
             })
         },

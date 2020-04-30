@@ -21,7 +21,7 @@ const addPhoto = {
         albumId: { type: GraphQLNonNull(GraphQLInt) },
         title: { type: GraphQLNonNull(GraphQLString) },
         url: { type: GraphQLNonNull(GraphQLString) },
-        thumbnailUrl: { type: GraphQLNonNull(GraphQLString) }
+        thumbnailUrl: { type: GraphQLString, defaultValue: "" }
     },
     resolve: (parent, args) => {
         const newPhoto = {
@@ -29,7 +29,7 @@ const addPhoto = {
             id: data.length + 1,
             title: args.title,
             url: args.url,
-            thumbnailUrl: args.thumbnailUrl
+            thumbnailUrl: args.thumbnailUrl || args.url
         }
         return newPhoto
     }

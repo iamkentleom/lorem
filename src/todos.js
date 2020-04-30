@@ -20,7 +20,7 @@ const addTodo = {
     args: {
         userId: { type: GraphQLNonNull(GraphQLInt) },
         title: { type: GraphQLNonNull(GraphQLString) },
-        completed: { type: GraphQLNonNull(GraphQLBoolean) }
+        completed: { type: GraphQLNonNull(GraphQLBoolean), defaultValue: false }
     },
     resolve: (parent, args) => {
         const newTodo = {
