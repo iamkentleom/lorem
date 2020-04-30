@@ -4,17 +4,14 @@ const  data = require('../data.json').photos
 
 const photos = {
     type: new GraphQLList(PhotoType),
-    description: 'List of all photos',
-    resolve: () => data
-}
-
-const photo = {
-    type: PhotoType,
-    description: 'A single photo',
+    description: 'List of photos',
     args: {
-        id: { type: GraphQLInt }
+        id: { type: GraphQLInt, defaultValue: -1 }
     },
-    resolve: (parent, args) => data.find(photo => photo.id === args.id)
+    resolve: (parent, args) => {
+        if(args.id !== -1) return data.filter(photo => photo.id === args.id)
+        return data
+    }
 }
 
 const addPhoto = {
@@ -38,4 +35,4 @@ const addPhoto = {
     }
 }
 
-module.exports = { addPhoto, photo, photos }
+module.exports = { addPhoto, photos }

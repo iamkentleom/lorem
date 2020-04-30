@@ -3,12 +3,12 @@ const expressGraphQL = require('express-graphql')
 const cors = require('cors')
 const { GraphQLSchema, GraphQLObjectType } = require('graphql')
 
-const { addAlbum, album, albums } = require('./src/albums')
-const { addComment, comment, comments }  = require('./src/comments')
-const { addPhoto, photo, photos } = require('./src/photos')
-const { addPost, post, posts } = require('./src/posts')  
-const { addTodo, todo, todos } = require('./src/todos')
-const { addUser, user, users } = require('./src/users')
+const { addAlbum, albums } = require('./src/albums')
+const { addComment, comments }  = require('./src/comments')
+const { addPhoto, photos } = require('./src/photos')
+const { addPost, posts } = require('./src/posts')  
+const { addTodo, todos } = require('./src/todos')
+const { addUser, users } = require('./src/users')
 
 
 const app = express()
@@ -19,17 +19,11 @@ const RootQueryType = new GraphQLObjectType({
     name: 'Query',
     description: 'Root Query',
     fields: () => ({
-        album,
         albums,
-        comment,
         comments,
-        photo,
         photos,
-        post,
         posts,
-        todo,
         todos,
-        user,
         users
     })
 })

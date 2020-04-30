@@ -4,19 +4,15 @@ const  data = require('../data.json').posts
 
 const posts = {
     type: new GraphQLList(PostType),
-    description: 'List of all posts',
-    resolve: () => data
-}
-
-const post = {
-    type: PostType,
-    description: 'A single post',
+    description: 'List of posts',
     args: {
-        id: { type: GraphQLInt }
+        id: { type: GraphQLInt, defaultValue: -1 }
     },
-    resolve: (parent, args) => data.find(post => post.id === args.id)
+    resolve: (parent, args) => {
+        if(args.id !== -1) return data.filter(post => post.id === args.id)
+        return data
+    }
 }
-
 
 const addPost = {
     type: PostType,
@@ -37,4 +33,4 @@ const addPost = {
     }
 }
 
-module.exports = { addPost, posts, post }
+module.exports = { addPost, posts }

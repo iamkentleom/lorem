@@ -4,17 +4,14 @@ const data = require('../data.json').albums
 
 const albums = {
     type: new GraphQLList(AlbumType),
-    description: 'List of all albums',
-    resolve: () => data
-}
-
-const album = {
-    type: AlbumType,
-    description: 'A single album',
+    description: 'List of albums',
     args: {
-        id: { type: GraphQLInt }
+        id: { type: GraphQLInt, defaultValue: -1 }
     },
-    resolve: (parent, args) => data.find(album => album.id === args.id)
+    resolve: (parent, args) => {
+        if(args.id !== -1) return data.filter(album => album.id === args.id)
+        return data
+    }
 }
 
 const addAlbum = {
@@ -34,4 +31,4 @@ const addAlbum = {
     }
 }
 
-module.exports = { addAlbum, album, albums }
+module.exports = { addAlbum, albums }

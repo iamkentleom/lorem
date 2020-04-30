@@ -4,17 +4,14 @@ const data = require('../data.json').users
 
 const users = {
     type: new GraphQLList(UserType),
-    description: 'List all users',
-    resolve: () => data
-}
-
-const user = {
-    type: UserType,
-    description: 'A single user',
+    description: 'List of users',
     args: {
-        id: { type: GraphQLInt }
+        id: { type: GraphQLInt, defaultValue: -1 }
     },
-    resolve: (parent, args) => data.find(user => user.id === args.id)
+    resolve: (parent, args) => {
+        if(args.id !== -1) return data.filter(user => user.id === args.id)
+        return data
+    }
 }
 
 const addUser = {
@@ -44,4 +41,4 @@ const addUser = {
     }
 }
 
-module.exports = { addUser, user, users }
+module.exports = { addUser, users }
