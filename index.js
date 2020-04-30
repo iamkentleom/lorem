@@ -37,7 +37,7 @@ const RootMutationType = new GraphQLObjectType({
         addPhoto,
         addPost,
         addTodo,
-        // addUser
+        addUser
     })
 })
 

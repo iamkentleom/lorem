@@ -14,30 +14,58 @@ const users = {
     }
 }
 
+const UserInput = new GraphQLInputObjectType({
+    name: 'UserInput',
+    description: 'User input object',
+    fields: () => ({
+        name: { type: GraphQLNonNull(GraphQLString) },
+        username: { type: GraphQLNonNull(GraphQLString) },
+        email: { type: GraphQLNonNull(GraphQLString) },
+        address: {
+            type: new GraphQLInputObjectType({
+                name: 'AddressInput',
+                fields: () => ({
+                    street: { type: GraphQLNonNull(GraphQLString) },
+                    suite: { type: GraphQLNonNull(GraphQLString) },
+                    city: { type: GraphQLNonNull(GraphQLString) },
+                    zipcode: { type: GraphQLNonNull(GraphQLString) },
+                    geo: {
+                        type: new GraphQLInputObjectType({
+                            name: 'GeoInput',
+                            description: 'Represents latitude and longitude',
+                            fields: () => ({
+                                lat: { type: GraphQLNonNull(GraphQLString) },
+                                lng: { type: GraphQLNonNull(GraphQLString) }
+                            })
+                        })
+                    }
+                })
+            })
+        },
+        phone: { type: GraphQLNonNull(GraphQLString) },
+        website: { type: GraphQLNonNull(GraphQLString) },
+        company: {
+            type: new GraphQLInputObjectType({
+                name: 'CompanyInput',
+                fields: () => ({
+                    name: { type: GraphQLNonNull(GraphQLString) },
+                    catchPhrase: { type: GraphQLNonNull(GraphQLString) },
+                    bs: { type: GraphQLNonNull(GraphQLString) }
+                })
+            })
+        }
+    })
+})
+
 const addUser = {
     type: UserType,
     description: 'Add a new user',
     args: {
-        name: { type: GraphQLNonNull(GraphQLString) },
-        username: { type: GraphQLNonNull(GraphQLString) },
-        email: { type: GraphQLNonNull(GraphQLString) },
-        address: { type: GraphQLInputObjectType},
-        phone: { type: GraphQLNonNull(GraphQLString) },
-        website: { type: GraphQLNonNull(GraphQLString) },
-        company: { type: GraphQLInputObjectType}
+        input: { type: new GraphQLNonNull(UserInput) }
     },
-    resolve: (parent, args) => {
-        const newUser = {
-            id: data.length + 1,
-            name: args.name,
-            username: args.username,
-            email: args.email,
-            address: args.address,
-            phone: args.phone,
-            website: args.website,
-            company: args.company
-        }
-        return newUser
+    resolve: (parent, { input }) => {
+        input.id = data.length + 1
+        return input
     }
 }
 
