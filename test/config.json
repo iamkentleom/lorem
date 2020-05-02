@@ -1,0 +1,4 @@
+{ 
+    "URL": "http://localhost:8000/graphql",
+    "TIMEOUT": 10000
+}
