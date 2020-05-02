@@ -133,3 +133,6 @@ axios.post('http://localhost:8000/graphql', { query })
 - https://jsonplaceholder.typicode.com/
 - https://github.com/typicode/jsonplaceholder
 - https://medium.com/atheros/json-as-an-argument-for-graphql-mutations-and-queries-3cd06d252a04
+
+## License
+[MIT](./LICENSE)
