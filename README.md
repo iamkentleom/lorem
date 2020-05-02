@@ -29,7 +29,7 @@ Head over to ```http://localhost:8000/graphql``` to access GraphiQL
 <br/>
 
 ### Sample Query
-```json
+```javascript
 // get the album with id of 1
 {
   albums(id: 1){ // *removing id parameter will return a list of all the albums
@@ -56,7 +56,7 @@ Additional fields *(see graphiql documentation explorer for more detailed info)*
 
 
 ### Sample Mutation
-```json
+```javascript
 // adding a new todo item
 mutation {
   addTodo(userId: 8, title: "Todo", completed: false) {
