@@ -23,7 +23,7 @@ const addComment = {
         email: { type: GraphQLNonNull(GraphQLString) },
         body: { type: GraphQLNonNull(GraphQLString) }
     },
-    resolve: () => {
+    resolve: (parent, args) => {
         const newComment = {
             postId: args.postId,
             id: data.length + 1,
