@@ -49,6 +49,7 @@ const schema = new GraphQLSchema({
 
 app.use(cors())
 app.use(express.static('public'))
+app.use('/images', express.static('images'))
 app.use('/graphql', expressGraphQL({
     schema: schema,
     graphiql: true
